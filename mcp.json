@@ -1,0 +1,19 @@
+{
+  "mcpServers": {
+    "text-to-sql-db": {
+      "command": "python",
+      "args": ["mcp_server.py"],
+      "env": {
+        "DATABASE_PATH": "./ecommerce.db"
+      },
+      "disabled": false,
+      "autoApprove": [
+        "list_tables",
+        "describe_table",
+        "get_full_schema",
+        "validate_sql",
+        "get_sample_data"
+      ]
+    }
+  }
+}

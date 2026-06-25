@@ -1,0 +1,28 @@
+# Environment
+.env
+
+# Database (regenerated on deploy)
+*.db
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+env/
+
+# Data exports (regenerated)
+data/*.csv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log

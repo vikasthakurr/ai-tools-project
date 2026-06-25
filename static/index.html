@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Text-to-SQL | Ask Your Database</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app">
+      <!-- Header -->
+      <header class="header">
+        <div class="header-content">
+          <div class="logo">
+            <span class="logo-icon">⚡</span>
+            <h1>Text-to-SQL</h1>
+          </div>
+          <p class="tagline">
+            Ask questions in plain English. Get answers from your database.
+          </p>
+        </div>
+      </header>
+
+      <!-- Main Content -->
+      <main class="main">
+        <!-- Query Section -->
+        <section class="query-section">
+          <form id="query-form" class="query-form">
+            <div class="input-wrapper">
+              <textarea
+                id="question-input"
+                placeholder="Ask a question about your e-commerce data..."
+                rows="2"
+                maxlength="500"
+                autofocus
+              ></textarea>
+              <span class="char-count"
+                ><span id="char-current">0</span>/500</span
+              >
+            </div>
+            <button type="submit" id="submit-btn" class="btn-primary">
+              <span class="btn-text">Generate SQL</span>
+              <span class="btn-loading hidden">
+                <span class="spinner"></span>
+                Processing...
+              </span>
+            </button>
+          </form>
+
+          <!-- Sample Questions -->
+          <div class="sample-questions">
+            <p class="sample-label">Try these</p>
+            <div class="sample-chips">
+              <button
+                class="chip"
+                data-question="How many customers do we have?"
+              >
+                Customer count
+              </button>
+              <button
+                class="chip"
+                data-question="What are the top 5 best selling products?"
+              >
+                Top products
+              </button>
+              <button class="chip" data-question="Show revenue by category">
+                Revenue by category
+              </button>
+              <button
+                class="chip"
+                data-question="What is the average order value?"
+              >
+                Avg order value
+              </button>
+              <button
+                class="chip"
+                data-question="Which payment method is most popular?"
+              >
+                Payment methods
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Results Section -->
+        <section id="results-section" class="results-section hidden">
+          <!-- SQL Preview -->
+          <div id="sql-panel" class="sql-panel hidden">
+            <div class="panel-header">
+              <span class="panel-title">Generated SQL</span>
+              <button id="copy-sql-btn" class="btn-icon" title="Copy SQL">
+                <span>📋</span>
+              </button>
+            </div>
+            <pre class="sql-code"><code id="sql-output"></code></pre>
+          </div>
+
+          <!-- Error Message -->
+          <div id="error-panel" class="error-panel hidden">
+            <div class="error-icon">⚠️</div>
+            <p id="error-message"></p>
+          </div>
+
+          <!-- Results Table -->
+          <div id="table-panel" class="table-panel hidden">
+            <div class="panel-header">
+              <span class="panel-title">Results</span>
+              <span id="row-count" class="row-badge"></span>
+            </div>
+            <div class="table-wrapper">
+              <table id="results-table">
+                <thead id="table-head"></thead>
+                <tbody id="table-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- History Section -->
+        <section class="history-section">
+          <details id="history-details">
+            <summary class="history-toggle">
+              Query History <span id="history-count" class="badge">0</span>
+            </summary>
+            <div id="history-list" class="history-list"></div>
+          </details>
+        </section>
+      </main>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <p>Powered by Google Gemini · FastAPI · SQLite</p>
+      </footer>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
